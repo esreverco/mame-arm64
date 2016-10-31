@@ -460,6 +460,7 @@ configuration { "vs*" }
 		"NoPCH",
 		"ExtraWarnings",
 		"NoEditAndContinue",
+		"NoWinRT",
 	}
 	if not _OPTIONS["NOWERROR"] then
 		flags{
@@ -490,6 +491,9 @@ if _OPTIONS["targetos"] == "android" then
 end
 
 configuration {}
+
+windowstargetplatformversion("10.0.14393.0")
+windowstargetplatformminversion("10.0.14393.0")
 
 msgcompile ("Compiling $(subst ../,,$<)...")
 

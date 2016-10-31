@@ -54,7 +54,7 @@ newoption {
 		{ "winphone8",     "Windows Phone 8.0" },
 		{ "winphone81",    "Windows Phone 8.1" },
 		{ "winstore81",    "Windows Store 8.1" },
-		{ "winstore82",    "Universal Windows App" }
+		{ "uwp", 		   "Universal Windows App" }
 	},
 }
 
@@ -356,7 +356,7 @@ function toolchain(_buildDir, _subDir)
 			location (_buildDir .. "projects/" .. _subDir .. "/".. _ACTION .. "-winstore81")
 		end
 
-		if "winstore82" == _OPTIONS["vs"] then
+		if "uwp" == _OPTIONS["vs"] then
 			premake.vstudio.toolset = "v140"
 			premake.vstudio.storeapp = "8.2"
 
@@ -369,7 +369,7 @@ function toolchain(_buildDir, _subDir)
 			action.vstudio.windowsTargetPlatformVersion = windowsPlatform
 
 			platforms { "ARM" }
-			location (_buildDir .. "projects/" .. _subDir .. "/".. _ACTION .. "-winstore82")
+			location (_buildDir .. "projects/" .. _subDir .. "/".. _ACTION .. "-uwp")
 		end
 
 		if "intel-14" == _OPTIONS["vs"] then
