@@ -39,6 +39,7 @@ class render_primitive_list;
 enum
 {
 	VIDEO_MODE_NONE = 0,
+	VIDEO_MODE_VNC,
 	VIDEO_MODE_GDI,
 	VIDEO_MODE_BGFX,
 #if defined(USE_OPENGL) && USE_OPENGL

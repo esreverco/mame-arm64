@@ -173,6 +173,10 @@ void windows_osd_interface::extract_video_config()
 		if (!emulator_info::standalone() && options().seconds_to_run() == 0)
 			osd_printf_warning("Warning: -video none doesn't make much sense without -seconds_to_run\n");
 	}
+	else if (strcmp(stemp, "vnc") == 0)
+	{
+		video_config.mode = VIDEO_MODE_VNC;
+	}
 #if (USE_OPENGL)
 	else if (strcmp(stemp, "opengl") == 0)
 		video_config.mode = VIDEO_MODE_OPENGL;

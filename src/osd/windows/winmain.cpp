@@ -487,6 +487,7 @@ void windows_osd_interface::video_register()
 #if USE_OPENGL
 	video_options_add("opengl", nullptr);
 #endif
+	video_options_add("vnc", nullptr);
 	video_options_add("bgfx", nullptr);
 	//video_options_add("auto", nullptr); // making d3d video default one
 }

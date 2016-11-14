@@ -35,6 +35,7 @@
 
 #include "window.h"
 #include "osdsdl.h"
+#include "modules/render/drawvnc.h"
 #include "modules/render/drawbgfx.h"
 #include "modules/render/drawsdl.h"
 #include "modules/render/draw13.h"
@@ -97,6 +98,9 @@ bool sdl_osd_interface::window_init()
 	{
 		case VIDEO_MODE_BGFX:
 			renderer_bgfx::init(machine());
+			break;
+		case VIDEO_MODE_VNC:
+			renderer_vnc::init(machine());
 			break;
 #if (USE_OPENGL)
 		case VIDEO_MODE_OPENGL:
@@ -201,6 +205,9 @@ void sdl_osd_interface::window_exit()
 			break;
 		case VIDEO_MODE_BGFX:
 			renderer_bgfx::exit();
+			break;
+		case VIDEO_MODE_VNC:
+			renderer_vnc::exit();
 			break;
 #if (USE_OPENGL)
 		case VIDEO_MODE_OPENGL:

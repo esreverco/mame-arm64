@@ -113,6 +113,14 @@ function osdmodulesbuild()
 		MAME_DIR .. "src/osd/modules/monitor/monitor_win32.cpp",
 		MAME_DIR .. "src/osd/modules/monitor/monitor_dxgi.cpp",
 		MAME_DIR .. "src/osd/modules/monitor/monitor_sdl.cpp",
+		MAME_DIR .. "src/osd/modules/render/drawvnc.cpp",
+		MAME_DIR .. "src/osd/modules/render/drawvnc.h",
+		MAME_DIR .. "src/osd/modules/render/vnc/keysymdef.h",
+		MAME_DIR .. "src/osd/modules/render/vnc/rfb_pixel_format.cpp",
+		MAME_DIR .. "src/osd/modules/render/vnc/rfb_pixel_format.hpp",
+		MAME_DIR .. "src/osd/modules/render/vnc/vncd.hpp",
+		MAME_DIR .. "src/osd/modules/render/vnc/vncd_connection.cpp",
+		MAME_DIR .. "src/osd/modules/render/vnc/vncd_connection.hpp",
 	}
 	includedirs {
 		MAME_DIR .. "3rdparty/asio/include",

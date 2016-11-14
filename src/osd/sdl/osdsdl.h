@@ -41,6 +41,7 @@
 #define SDLOPTVAL_SOFT                  "soft"
 #define SDLOPTVAL_SDL2ACCEL             "accel"
 #define SDLOPTVAL_BGFX                  "bgfx"
+#define SDLOPTVAL_VNC                   "vnc"
 
 #define SDLMAME_LED(x)                  "led" #x
 

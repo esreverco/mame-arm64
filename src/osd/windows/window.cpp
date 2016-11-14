@@ -41,6 +41,7 @@ using namespace Windows::UI::Core;
 
 #include "modules/render/drawbgfx.h"
 #include "modules/render/drawnone.h"
+#include "modules/render/drawvnc.h"
 #include "modules/render/drawd3d.h"
 #include "modules/render/drawgdi.h"
 #if (USE_OPENGL)
@@ -170,6 +171,9 @@ bool windows_osd_interface::window_init()
 			case VIDEO_MODE_NONE:
 				error = renderer_none::init(machine());
 				break;
+			case VIDEO_MODE_VNC:
+				error = renderer_vnc::init(machine());
+				break;
 			case VIDEO_MODE_GDI:
 				error = renderer_gdi::init(machine());
 				break;
@@ -276,6 +280,9 @@ void windows_osd_interface::window_exit()
 	{
 		case VIDEO_MODE_NONE:
 			renderer_none::exit();
+			break;
+		case VIDEO_MODE_VNC:
+			renderer_vnc::exit();
 			break;
 		case VIDEO_MODE_GDI:
 			renderer_gdi::exit();
@@ -1084,7 +1091,7 @@ int win_window_info::complete_create()
 	SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)this);
 
 	// skip the positioning stuff for -video none */
-	if (video_config.mode == VIDEO_MODE_NONE)
+	if (video_config.mode == VIDEO_MODE_NONE || video_config.mode == VIDEO_MODE_VNC)
 	{
 		set_renderer(osd_renderer::make_for_type(video_config.mode, shared_from_this()));
 		renderer().create();
@@ -1814,7 +1821,7 @@ void win_window_info::set_fullscreen(int fullscreen)
 	// show ourself
 	if (!this->fullscreen() || m_fullscreen_safe)
 	{
-		if (video_config.mode != VIDEO_MODE_NONE)
+		if (video_config.mode != VIDEO_MODE_NONE && video_config.mode != VIDEO_MODE_VNC)
 			ShowWindow(platform_window<HWND>(), SW_SHOW);
 
 		set_renderer(osd_renderer::make_for_type(video_config.mode, shared_from_this()));
