@@ -214,7 +214,9 @@ bool stack_walker::reset()
 	m_stackframe.AddrStack.Mode = AddrModeFlat;
 
 	// pull architecture-specific fields from the context
-#ifdef PTR64
+#ifdef _M_ARM64
+
+#elif PTR64
 	m_stackframe.AddrPC.Offset = m_context.Rip;
 	m_stackframe.AddrFrame.Offset = m_context.Rsp;
 	m_stackframe.AddrStack.Offset = m_context.Rsp;
@@ -240,7 +242,9 @@ void stack_walker::reset(CONTEXT &initial, HANDLE thread)
 	m_stackframe.AddrStack.Mode = AddrModeFlat;
 
 	// pull architecture-specific fields from the context
-#ifdef PTR64
+#ifdef _M_ARM64
+
+#elif PTR64
 	m_stackframe.AddrPC.Offset = m_context.Rip;
 	m_stackframe.AddrFrame.Offset = m_context.Rsp;
 	m_stackframe.AddrStack.Offset = m_context.Rsp;
@@ -980,7 +984,9 @@ private:
 
 		// print the state of the CPU
 		fprintf(stderr, "-----------------------------------------------------\n");
-#ifdef PTR64
+#ifdef _M_ARM64
+
+#elif PTR64
 		fprintf(stderr, "RAX=%p RBX=%p RCX=%p RDX=%p\n",
 			(void *)info->ContextRecord->Rax,
 			(void *)info->ContextRecord->Rbx,

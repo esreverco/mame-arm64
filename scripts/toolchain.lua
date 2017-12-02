@@ -53,6 +53,7 @@ newoption {
 		{ "vs2015-xp",     "Visual Studio 2015 targeting XP" },
 		{ "vs2017-clang",  "Clang 3.6"         },
 		{ "vs2017-xp",     "Visual Studio 2017 targeting XP" },
+		{ "vs2017-arm64",  "Visual Studio 2017 targeting ARM64" },
 		{ "winphone8",     "Windows Phone 8.0" },
 		{ "winphone81",    "Windows Phone 8.1" },
 		{ "winstore81",    "Windows Store 8.1" },
@@ -442,6 +443,20 @@ function toolchain(_buildDir, _subDir)
 			premake.vstudio.toolset = ("v141_xp")
 			location (_buildDir .. "projects/" .. _subDir .. "/".. _ACTION .. "-xp")
 		end
+		
+		if "vs2017-arm64" == _OPTIONS["vs"] then
+			premake.vstudio.toolset = ("v141")
+
+			platforms { "ARM64" }
+			defines { "_ARM64_" }
+			flags { "WindowsSDKDesktopSupport" }
+
+			local action = premake.action.current()
+			action.vstudio.windowsTargetPlatformVersion = windowsPlatform
+
+			location (_buildDir .. "projects/" .. _subDir .. "/".. _ACTION .. "-arm64")
+		end
+		
 	elseif _ACTION == "xcode4" then
 
 
@@ -496,6 +511,16 @@ function toolchain(_buildDir, _subDir)
 
 	configuration { "ARM", "vs*", "Debug" }
 		targetdir (_buildDir .. _ACTION .. "/bin/ARM/Debug")
+
+	configuration { "ARM64", "vs*" }
+		targetdir (_buildDir .. _ACTION .. "/bin/ARM64")
+		objdir (_buildDir .. _ACTION .. "/obj")
+
+	configuration { "ARM64", "vs*", "Release" }
+		targetdir (_buildDir .. _ACTION .. "/bin/ARM64/Release")
+
+	configuration { "ARM64", "vs*", "Debug" }
+		targetdir (_buildDir .. _ACTION .. "/bin/ARM64/Debug")
 
 	configuration { "x32", "vs*-clang" }
 		objdir (_buildDir .. _ACTION .. "-clang/obj")

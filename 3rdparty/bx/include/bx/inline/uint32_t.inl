@@ -325,7 +325,7 @@ namespace bx
 	{
 #if BX_COMPILER_GCC || BX_COMPILER_CLANG
 		return __builtin_popcount(_val);
-#elif BX_COMPILER_MSVC && BX_PLATFORM_WINDOWS
+#elif BX_COMPILER_MSVC && BX_PLATFORM_WINDOWS && BX_CPU_X86
 		return __popcnt(_val);
 #else
 		return uint32_cntbits_ref(_val);

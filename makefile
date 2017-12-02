@@ -1096,6 +1096,13 @@ ifdef MSBUILD
 	$(SILENT) msbuild.exe $(PROJECTDIR_WIN)/vs2017-xp/$(PROJECT_NAME).sln $(MSBUILD_PARAMS)
 endif
 
+.PHONY: vs2017_arm64
+vs2017_arm64: generate
+	$(SILENT) $(GENIE) $(PARAMS) $(TARGET_PARAMS) --vs=vs2017-arm64 --with-windows=10.0.16299.0 --NO_OPENGL=1 vs2017
+ifdef MSBUILD
+	$(SILENT) msbuild.exe $(PROJECTDIR_WIN)/vs2017-xp/$(PROJECT_NAME).sln $(MSBUILD_PARAMS)
+endif
+
 .PHONY: vs2017_uwp
 vs2017_uwp: generate
 	$(SILENT) $(GENIE) $(PARAMS) $(TARGET_PARAMS) --vs=winstore82 --osd=uwp --NO_USE_MIDI=1 --NO_OPENGL=1 --USE_QTDEBUG=0 --NO_USE_PORTAUDIO=1 --MODERN_WIN_API=1 vs2015

@@ -1168,12 +1168,20 @@ configuration { "mingw-clang" }
 configuration { "vs*" }
 		defines {
 			"XML_STATIC",
-			"WIN32",
-			"_WIN32",
 			"_CRT_NONSTDC_NO_DEPRECATE",
 			"_CRT_SECURE_NO_DEPRECATE",
 			"_CRT_STDIO_LEGACY_WIDE_SPECIFIERS",
+			"WIN32",
 		}
+if _OPTIONS["vs"]==nil or not (string.startswith(_OPTIONS["vs"], "vs2017-arm64")) then
+		defines {
+			"_WIN32",
+		}
+end
+if (string.startswith(_OPTIONS["vs"], "vs2017-arm64")) then
+	defines { "PTR64=1" }
+end
+
 -- Windows Store/Phone projects already link against the available libraries.
 if _OPTIONS["vs"]==nil or not (string.startswith(_OPTIONS["vs"], "winstore8") or string.startswith(_OPTIONS["vs"], "winphone8")) then
 		links {
