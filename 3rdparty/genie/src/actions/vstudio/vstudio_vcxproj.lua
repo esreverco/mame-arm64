@@ -125,6 +125,15 @@
 		if cfg.flags.Managed then
 			_p(2,'<CLRSupport>true</CLRSupport>')
 		end
+
+		if cfg.platform == "ARM" and cfg.flags.WindowsSDKDesktopSupport then
+			_p(2,'<WindowsSDKDesktopARMSupport>true</WindowsSDKDesktopARMSupport>')
+		end
+
+		if cfg.platform == "ARM64" and cfg.flags.WindowsSDKDesktopSupport then
+			_p(2,'<WindowsSDKDesktopARM64Support>true</WindowsSDKDesktopARM64Support>')
+		end
+
 		_p(1,'</PropertyGroup>')
 	end
 

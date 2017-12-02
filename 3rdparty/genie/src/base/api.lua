@@ -229,6 +229,7 @@
 					UnsignedChar = 1,
 					UseFullPaths = 1,
 					WinMain = 1,
+					WindowsSDKDesktopSupport = 1,
 				}
 
 				local englishToAmericanSpelling =

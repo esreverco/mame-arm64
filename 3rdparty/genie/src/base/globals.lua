@@ -67,6 +67,12 @@
 			cfgsuffix       = "ARM",
 			iscrosscompiler = true,
 		},
+		ARM64 =
+		{
+			cfgsuffix       = "ARM64",
+			iscrosscompiler = true,
+			namestyle       = "windows",
+		},
 		Orbis =
 		{
 			cfgsuffix       = "orbis",
