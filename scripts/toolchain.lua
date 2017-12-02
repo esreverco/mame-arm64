@@ -448,7 +448,6 @@ function toolchain(_buildDir, _subDir)
 			premake.vstudio.toolset = ("v141")
 
 			platforms { "ARM64" }
-			defines { "_ARM64_" }
 			flags { "WindowsSDKDesktopSupport" }
 
 			local action = premake.action.current()
@@ -513,6 +512,7 @@ function toolchain(_buildDir, _subDir)
 		targetdir (_buildDir .. _ACTION .. "/bin/ARM/Debug")
 
 	configuration { "ARM64", "vs*" }
+		defines { "_ARM64_" }
 		targetdir (_buildDir .. _ACTION .. "/bin/ARM64")
 		objdir (_buildDir .. _ACTION .. "/obj")
 
