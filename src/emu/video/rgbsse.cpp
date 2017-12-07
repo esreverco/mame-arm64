@@ -10,7 +10,7 @@
 
 ***************************************************************************/
 
-#if (!defined(MAME_DEBUG) || defined(__OPTIMIZE__)) && (defined(__SSE2__) || defined(_MSC_VER)) && defined(PTR64)
+#if defined(__SSE2__) || defined(__x86_64__) || defined(_M_X64)
 
 #include "emu.h"
 #include <emmintrin.h>
@@ -184,4 +184,4 @@ void rgbaint_t::scale_and_clamp(const rgbaint_t& scale)
 	clamp_to_uint8();
 }
 
-#endif // defined(__SSE2__) || defined(_MSC_VER)
+#endif // defined(__SSE2__) || defined(__x86_64__) || defined(_M_X64)

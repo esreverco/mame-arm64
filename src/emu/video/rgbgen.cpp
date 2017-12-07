@@ -8,7 +8,7 @@
 
 ***************************************************************************/
 
-#if !(defined(__ALTIVEC__) || ((!defined(MAME_DEBUG) || defined(__OPTIMIZE__)) && (defined(__SSE2__) || defined(_MSC_VER)) && defined(PTR64)))
+#if !(defined(__ALTIVEC__) || (defined(__SSE2__) || defined(__x86_64__) || defined(_M_X64)))
 
 #include "emu.h"
 #include "rgbgen.h"

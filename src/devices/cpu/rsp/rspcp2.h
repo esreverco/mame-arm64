@@ -25,7 +25,7 @@
 #define SSE_AVAILABLE   (0)
 #endif
 
-#if (SSE_AVAILABLE || defined(_MSC_VER)) && defined(PTR64) && !SIMD_OFF
+#if (SSE_AVAILABLE || defined(__x86_64__) || defined(_M_X64)) && !SIMD_OFF
 #define USE_SIMD    (1)
 #else
 #define USE_SIMD    (0)

@@ -1961,7 +1961,7 @@ DECLARE_DEVICE_TYPE(VOODOO_BANSHEE, voodoo_banshee_device)
 DECLARE_DEVICE_TYPE(VOODOO_3,       voodoo_3_device)
 
 // use SSE on 64-bit implementations, where it can be assumed
-#if 1 && ((!defined(MAME_DEBUG) || defined(__OPTIMIZE__)) && (defined(__SSE2__) || defined(_MSC_VER)) && defined(PTR64))
+#if 1 && ((!defined(MAME_DEBUG) || defined(__OPTIMIZE__)) && (defined(__SSE2__) || defined(__x86_64__) || defined(_M_X64)))
 #include <emmintrin.h>
 #ifdef __SSE4_1__
 #include <smmintrin.h>
