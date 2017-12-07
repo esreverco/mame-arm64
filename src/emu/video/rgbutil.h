@@ -23,6 +23,10 @@
 #include "rgbgen.h"
 #endif
 
+#else // !defined(MAME_DEBUG) || defined(__OPTIMIZE__)
+
+#include "rgbgen.h"
+
 #endif // !defined(MAME_DEBUG) || defined(__OPTIMIZE__)
 
 #endif // MAME_EMU_VIDEO_RGBUTIL_H
